@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) => TaskData(),
       child: MaterialApp(
         theme: ThemeData(
+          fontFamily: 'ComicSans',
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kTaskTileColor,
         ),

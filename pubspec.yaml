@@ -18,6 +18,10 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  fonts:
+    - family: ComicSans
+      fonts:
+        - asset: fonts/LDFComicSans.ttf
 
   uses-material-design: true
 

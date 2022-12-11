@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-
-  final Function addTaskCallback;
-
-  AddTaskScreen({required this.addTaskCallback});
-
   @override
   Widget build(BuildContext context) {
     late String newTaskTitle;
 
     return Container(
-      color: const Color(0xff757575),
+      color: kHoverColor,
       child: Container(
         padding: const EdgeInsets.all(20.0),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20.0),
-            topLeft: Radius.circular(20.0),
-          ),
-        ),
+        decoration: kBoxDecoration,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -28,13 +20,12 @@ class AddTaskScreen extends StatelessWidget {
               child: const Text(
                 'Add Task',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.lightBlueAccent,
-                  fontSize: 30.0,
-                ),
+                style: kAddTaskTitle,
               ),
             ),
             TextField(
+              cursorColor: kPrimaryColor,
+              cursorHeight: 20.0,
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newText) {
@@ -42,20 +33,18 @@ class AddTaskScreen extends StatelessWidget {
               },
             ),
             TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.lightBlueAccent,
-              ),
-              onPressed: () {
-                addTaskCallback(newTaskTitle);
-              },
               child: const Text(
                 'Add',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                ),
+                style: kButtonTextTitle,
               ),
-            )
+              style: TextButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+              ),
+              onPressed: () {
+                Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),

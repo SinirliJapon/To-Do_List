@@ -42,7 +42,7 @@ class TasksScreen extends StatelessWidget {
                     height: 20.0,
                   ),
                   const Text(
-                    'My To-do List',
+                    'My To-Do List',
                     style: kTaskTitle,
                   ),
                   const SizedBox(
